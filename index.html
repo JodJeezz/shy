@@ -379,25 +379,15 @@
   }
 </style>
 </head>
-<body>
+<body style="background-color: #ffffff; background: #ffffff; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
 
 <!-- Audio Background Music -->
 <audio id="bgMusic" preload="auto" autoplay muted loop>
   <source src="ost-sdfofficial-mv_yaKLmOyv.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Stars -->
-<div class="stars-container" id="starsContainer"></div>
-
-<!-- Background petals -->
-<div class="bg-petals" id="bgPetals"></div>
-
 <!-- Main Scene -->
-<div class="scene">
-  <div class="ground">
-    <div class="ground-glow"></div>
-  </div>
-
+<div class="scene" style="background: transparent;">
   <!-- Main SVG -->
   <div class="flower-svg-wrap">
     <svg width="420" height="580" viewBox="0 0 420 580" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -441,12 +431,6 @@
           <stop offset="50%" stop-color="#d4a96a"/>
           <stop offset="100%" stop-color="#8a5e2a"/>
         </radialGradient>
-        <!-- Aura glow -->
-        <radialGradient id="auraGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#f5b8cc" stop-opacity="0.35"/>
-          <stop offset="60%" stop-color="#e8789a" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#e8789a" stop-opacity="0"/>
-        </radialGradient>
         <!-- Dew drop -->
         <radialGradient id="dewGrad" cx="30%" cy="30%" r="70%">
           <stop offset="0%" stop-color="white" stop-opacity="0.95"/>
@@ -458,58 +442,50 @@
           <stop offset="100%" stop-color="white" stop-opacity="0"/>
         </linearGradient>
         <filter id="petalGlow">
-          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feGaussianBlur stdDeviation="2" result="blur"/>
           <feComposite in="SourceGraphic" in2="blur" operator="over"/>
         </filter>
         <filter id="softGlow">
-          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feGaussianBlur stdDeviation="3" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <filter id="stemGlow">
-          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feGaussianBlur stdDeviation="1" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
 
       <!-- STEM -->
-      <!-- Main stem with gentle S-curve -->
       <path id="stemPath"
         d="M210 570 C208 530, 202 490, 205 450 C208 410, 218 380, 212 340 C206 300, 198 270, 205 230 C212 190, 216 170, 210 145"
         stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round"
         fill="none" filter="url(#stemGlow)"/>
-      <!-- Stem highlight -->
       <path
         d="M211 570 C210 530, 204 490, 207 450 C210 410, 218 382, 213 342 C207 302, 200 272, 207 232 C214 192, 217 172, 211 147"
         stroke="#8dcc8255" stroke-width="2.5" stroke-linecap="round"
         fill="none"/>
-      <!-- Branch for side bud left -->
       <path id="stemPath2"
         d="M206 310 C190 295, 170 290, 158 278"
         stroke="url(#stemGrad)" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <!-- Branch for side bud right -->
       <path
         style="stroke-dasharray:70;stroke-dashoffset:70;animation:drawStem2 1s ease-out 2.8s forwards"
         d="M210 360 C226 345, 245 342, 258 332"
         stroke="url(#stemGrad)" stroke-width="5" stroke-linecap="round" fill="none"/>
 
       <!-- LEAVES -->
-      <!-- Leaf 1 - large left lower -->
       <g id="leaf1" class="leaf-group leaf-sway-left" style="transform-origin:205px 400px">
         <path d="M205 400 C185 375, 148 368, 130 345 C112 322, 120 295, 145 298 C170 301, 195 355, 205 400Z"
               fill="url(#leafGrad1)" filter="url(#stemGlow)"/>
-        <!-- Leaf veins -->
         <path class="vein" style="--vein-delay:3.3s" d="M205 400 C185 375, 148 368, 130 345"
               stroke="#2d5228" stroke-width="1.2" fill="none" opacity="0.6"/>
         <path class="vein" style="--vein-delay:3.5s" d="M185 378 C178 370, 168 368, 158 363"
               stroke="#2d5228" stroke-width="0.8" fill="none" opacity="0.4"/>
         <path class="vein" style="--vein-delay:3.7s" d="M170 362 C165 356, 155 355, 148 350"
               stroke="#2d5228" stroke-width="0.7" fill="none" opacity="0.4"/>
-        <!-- Leaf sheen overlay -->
         <path d="M205 400 C185 375, 148 368, 130 345 C112 322, 120 295, 145 298 C170 301, 195 355, 205 400Z"
               fill="url(#leafSheen)" opacity="0.5"/>
       </g>
 
-      <!-- Leaf 2 - large right lower -->
       <g id="leaf2" class="leaf-group leaf-sway-right" style="transform-origin:212px 420px">
         <path d="M212 420 C232 395, 268 390, 288 366 C308 342, 298 314, 273 317 C248 320, 220 375, 212 420Z"
               fill="url(#leafGrad2)" filter="url(#stemGlow)"/>
@@ -521,7 +497,6 @@
               fill="url(#leafSheen)" opacity="0.5"/>
       </g>
 
-      <!-- Leaf 3 - mid left -->
       <g id="leaf3" class="leaf-group leaf-sway-left2" style="transform-origin:208px 305px">
         <path d="M208 305 C192 288, 162 284, 148 268 C134 252, 140 233, 158 236 C176 239, 200 272, 208 305Z"
               fill="url(#leafGrad1)" filter="url(#stemGlow)"/>
@@ -531,7 +506,6 @@
               fill="url(#leafSheen)" opacity="0.4"/>
       </g>
 
-      <!-- Leaf 4 - mid right -->
       <g id="leaf4" class="leaf-group leaf-sway-right2" style="transform-origin:213px 330px">
         <path d="M213 330 C228 314, 255 311, 268 296 C281 281, 275 261, 258 264 C241 267, 218 305, 213 330Z"
               fill="url(#leafGrad2)" filter="url(#stemGlow)"/>
@@ -542,14 +516,12 @@
       </g>
 
       <!-- SIDE BUDS -->
-      <!-- Left side bud -->
       <g class="side-bud" style="--sb-delay:5.2s; transform-origin:158px 278px">
         <ellipse cx="158" cy="275" rx="7" ry="11" fill="#d4607a" opacity="0.9"/>
         <path d="M154 281 C148 272, 152 263, 158 261 C164 259, 168 268, 162 278Z"
               fill="#f5b8cc" opacity="0.8"/>
         <line x1="158" y1="281" x2="158" y2="295" stroke="url(#stemGrad)" stroke-width="3" stroke-linecap="round"/>
       </g>
-      <!-- Right side bud -->
       <g class="side-bud" style="--sb-delay:5.6s; transform-origin:258px 332px">
         <ellipse cx="258" cy="329" rx="6" ry="9" fill="#c0536a" opacity="0.9"/>
         <path d="M254 334 C248 326, 252 318, 258 316 C264 314, 268 322, 262 332Z"
@@ -560,14 +532,7 @@
       <!-- FLOWER HEAD -->
       <g id="flowerHead">
 
-        <!-- Aura glow behind flower -->
-        <g id="flowerAura">
-          <circle id="auraCircle" cx="210" cy="140" r="72" fill="url(#auraGrad)"/>
-          <circle cx="210" cy="140" r="55" fill="none" stroke="#f5b8cc" stroke-width="1" opacity="0.2"
-            style="animation: auraPulse2 4s ease-in-out 10s infinite"/>
-        </g>
-
-        <!-- BUD (visible before petals bloom) -->
+        <!-- BUD -->
         <g id="budGroup">
           <ellipse cx="210" cy="148" rx="16" ry="24" fill="#c0536a" opacity="0.9"/>
           <path d="M197 155 C200 140, 208 132, 210 128 C212 132, 220 140, 223 155Z"
@@ -576,18 +541,15 @@
                 fill="#fde8ef" opacity="0.5"/>
         </g>
 
-        <!-- OUTER PETALS (8 petals) -->
-        <!-- P1 -->
+        <!-- OUTER PETALS -->
         <g class="petal-outer" style="--base-rot:0deg;--bloom-delay:5.8s;--sway-dir:4deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
           <path d="M210 140 C220 122, 232 96, 222 68 C217 50, 205 46, 200 60 C192 80, 202 120, 210 140Z"
                 fill="url(#petalOuter2)" opacity="0.5"/>
-          <!-- Petal vein -->
           <line class="vein" style="--vein-delay:6.5s" x1="210" y1="135" x2="212" y2="65"
                 stroke="#d4607a" stroke-width="0.8" opacity="0.35"/>
         </g>
-        <!-- P2 -->
         <g class="petal-outer" style="--base-rot:45deg;--bloom-delay:6.0s;--sway-dir:-3deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
@@ -596,7 +558,6 @@
           <line class="vein" style="--vein-delay:6.7s" x1="210" y1="135" x2="212" y2="65"
                 stroke="#d4607a" stroke-width="0.8" opacity="0.35"/>
         </g>
-        <!-- P3 -->
         <g class="petal-outer" style="--base-rot:90deg;--bloom-delay:6.2s;--sway-dir:4deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
@@ -605,7 +566,6 @@
           <line class="vein" style="--vein-delay:6.9s" x1="210" y1="135" x2="212" y2="65"
                 stroke="#d4607a" stroke-width="0.8" opacity="0.35"/>
         </g>
-        <!-- P4 -->
         <g class="petal-outer" style="--base-rot:135deg;--bloom-delay:6.4s;--sway-dir:-3deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
@@ -614,28 +574,24 @@
           <line class="vein" style="--vein-delay:7.1s" x1="210" y1="135" x2="212" y2="65"
                 stroke="#d4607a" stroke-width="0.8" opacity="0.35"/>
         </g>
-        <!-- P5 -->
         <g class="petal-outer" style="--base-rot:180deg;--bloom-delay:6.1s;--sway-dir:3deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
           <path d="M210 140 C220 122, 232 96, 222 68 C217 50, 205 46, 200 60 C192 80, 202 120, 210 140Z"
                 fill="url(#petalOuter2)" opacity="0.5"/>
         </g>
-        <!-- P6 -->
         <g class="petal-outer" style="--base-rot:225deg;--bloom-delay:6.3s;--sway-dir:-4deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
           <path d="M210 140 C220 122, 232 96, 222 68 C217 50, 205 46, 200 60 C192 80, 202 120, 210 140Z"
                 fill="url(#petalOuter2)" opacity="0.5"/>
         </g>
-        <!-- P7 -->
         <g class="petal-outer" style="--base-rot:270deg;--bloom-delay:6.5s;--sway-dir:4deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
           <path d="M210 140 C220 122, 232 96, 222 68 C217 50, 205 46, 200 60 C192 80, 202 120, 210 140Z"
                 fill="url(#petalOuter2)" opacity="0.5"/>
         </g>
-        <!-- P8 -->
         <g class="petal-outer" style="--base-rot:315deg;--bloom-delay:6.7s;--sway-dir:-3deg">
           <path d="M210 140 C222 120, 238 88, 225 58 C218 40, 202 38, 196 55 C185 78, 198 118, 210 140Z"
                 fill="url(#petalOuter1)" filter="url(#petalGlow)"/>
@@ -643,7 +599,7 @@
                 fill="url(#petalOuter2)" opacity="0.5"/>
         </g>
 
-        <!-- INNER PETALS (8 petals, offset 22.5deg, slightly smaller) -->
+        <!-- INNER PETALS -->
         <g class="petal-inner" style="--base-rot:22deg;--bloom-delay-inner:7s;--sway-dir:3deg">
           <path d="M210 143 C220 126, 232 100, 222 74 C217 58, 205 56, 200 70 C193 92, 203 124, 210 143Z"
                 fill="url(#petalInnerGrad)" filter="url(#petalGlow)"/>
@@ -679,11 +635,9 @@
 
         <!-- FLOWER CENTER -->
         <g id="flowerCenter">
-          <!-- Center disk -->
           <circle cx="210" cy="140" r="22" fill="url(#centerGrad)" filter="url(#softGlow)"/>
           <circle cx="210" cy="140" r="18" fill="#e8a84a" opacity="0.9"/>
           <circle cx="210" cy="140" r="13" fill="#d4a030" opacity="0.8"/>
-          <!-- Center texture dots -->
           <circle cx="206" cy="137" r="1.5" fill="#8a5e2a" opacity="0.6"/>
           <circle cx="212" cy="136" r="1.5" fill="#8a5e2a" opacity="0.6"/>
           <circle cx="215" cy="141" r="1.5" fill="#8a5e2a" opacity="0.6"/>
@@ -692,12 +646,10 @@
           <circle cx="209" cy="140" r="1.5" fill="#8a5e2a" opacity="0.6"/>
           <circle cx="213" cy="143" r="1.5" fill="#8a5e2a" opacity="0.5"/>
           <circle cx="207" cy="144" r="1" fill="#8a5e2a" opacity="0.5"/>
-          <!-- Center highlight -->
           <circle cx="206" cy="135" r="5" fill="white" opacity="0.18"/>
         </g>
 
         <!-- STAMENS -->
-        <!-- 12 stamens -->
         <g class="stamen" style="--st-delay:8.3s; transform-origin:210px 143px">
           <line x1="210" y1="122" x2="210" y2="118" stroke="#ffe066" stroke-width="1.5" stroke-linecap="round"/>
           <circle cx="210" cy="116" r="2.5" fill="#ffe566"/>
@@ -747,22 +699,22 @@
           <circle cx="210" cy="116" r="2.5" fill="#ffd040"/>
         </g>
 
-        <!-- DEW DROPS on petals -->
+        <!-- DEW DROPS -->
         <circle class="dew" style="--dew-delay:8.8s;--dew-r:3" cx="228" cy="105" r="0" fill="url(#dewGrad)"/>
         <circle class="dew" style="--dew-delay:9.0s;--dew-r:2.5" cx="195" cy="98" r="0" fill="url(#dewGrad)"/>
         <circle class="dew" style="--dew-delay:9.2s;--dew-r:2" cx="243" cy="130" r="0" fill="url(#dewGrad)"/>
         <circle class="dew" style="--dew-delay:9.4s;--dew-r:2" cx="177" cy="128" r="0" fill="url(#dewGrad)"/>
 
-      </g><!-- /flowerHead -->
+      </g>
 
       <!-- SVG Sparkles -->
       <g class="sparkle" style="--sp-dur:2.5s;--sp-delay:8.5s; left:0;top:0">
         <path d="M180 80 L183 88 L191 91 L183 94 L180 102 L177 94 L169 91 L177 88Z"
-              fill="#fde8ef" opacity="0.9"/>
+              fill="#f5b8cc" opacity="0.9"/>
       </g>
       <g class="sparkle" style="--sp-dur:3s;--sp-delay:9.0s; left:0;top:0">
         <path d="M245 70 L247 76 L253 78 L247 80 L245 86 L243 80 L237 78 L243 76Z"
-              fill="#ffe0a0" opacity="0.9"/>
+              fill="#d4a96a" opacity="0.9"/>
       </g>
       <g class="sparkle" style="--sp-dur:2s;--sp-delay:9.5s; left:0;top:0">
         <path d="M165 115 L167 120 L172 122 L167 124 L165 129 L163 124 L158 122 L163 120Z"
@@ -770,83 +722,25 @@
       </g>
       <g class="sparkle" style="--sp-dur:2.8s;--sp-delay:10s; left:0;top:0">
         <path d="M258 110 L260 115 L265 117 L260 119 L258 124 L256 119 L251 117 L256 115Z"
-              fill="#fde8ef" opacity="0.8"/>
+              fill="#f5b8cc" opacity="0.8"/>
       </g>
 
     </svg>
   </div>
+</div>
+
 <script>
-  // Generate stars
-  const starsContainer = document.getElementById('starsContainer');
-  for (let i = 0; i < 160; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    star.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      left: ${Math.random() * 100}%;
-      top: ${Math.random() * 85}%;
-      --dur: ${2 + Math.random() * 4}s;
-      --delay: ${Math.random() * 5}s;
-      --min-op: ${0.1 + Math.random() * 0.2};
-      --max-op: ${0.6 + Math.random() * 0.4};
-    `;
-    starsContainer.appendChild(star);
-  }
-
-  // Generate background falling petals
-  const bgPetals = document.getElementById('bgPetals');
-  for (let i = 0; i < 22; i++) {
-    const petal = document.createElement('div');
-    petal.className = 'bg-petal';
-    const size = 10 + Math.random() * 22;
-    const drift = (Math.random() - 0.5) * 200;
-    const spin = (Math.random() - 0.5) * 720;
-    petal.style.cssText = `
-      left: ${Math.random() * 105 - 2}%;
-      --size: ${size}px;
-      --fall-dur: ${10 + Math.random() * 10}s;
-      --fall-delay: ${Math.random() * 15}s;
-      --drift: ${drift}px;
-      --spin: ${spin}deg;
-    `;
-    bgPetals.appendChild(petal);
-  }
-
-  // Floating hearts near flower
-  const scene = document.querySelector('.scene');
-  const heartSymbols = ['&hearts;', '&hearts;', '&hearts;'];
-  for (let i = 0; i < 7; i++) {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerHTML = '&hearts;';
-    const size = 10 + Math.random() * 12;
-    const left = 35 + Math.random() * 30;
-    const bottom = 120 + Math.random() * 100;
-    const drift = (Math.random() - 0.5) * 80;
-    heart.style.cssText = `
-      left: ${left}%;
-      bottom: ${bottom}px;
-      --heart-size: ${size}px;
-      --h-dur: ${3 + Math.random() * 3}s;
-      --h-delay: ${9 + Math.random() * 5}s;
-      --h-drift: ${drift}px;
-    `;
-    scene.appendChild(heart);
-  }
-
-  // Hide bud when petals start blooming
   setTimeout(() => {
     const bud = document.getElementById('budGroup');
-    bud.style.transition = 'opacity 1s ease-out';
-    bud.style.opacity = '0';
+    if (bud) {
+      bud.style.transition = 'opacity 1s ease-out';
+      bud.style.opacity = '0';
+    }
   }, 5800);
 
-  // Play background music with autoplay
   const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.5; // ตั้งระดับเสียงที่ 50%
+  bgMusic.volume = 0.5;
   
-  // ฟังก์ชันเล่นเพลง
   const playAudio = () => {
     bgMusic.muted = false;
     const playPromise = bgMusic.play();
@@ -857,16 +751,13 @@
     }
   };
   
-  // ลองเล่นอัตโนมัติ
   playAudio();
   
-  // ถ้าเล่นไม่ได้ ให้เพิ่มปุ่ม
   bgMusic.addEventListener('error', (e) => {
     console.log('Audio error:', e);
     addPlayButton();
   });
   
-  // เพิ่มปุ่มเล่นเป็น fallback
   const addPlayButton = () => {
     const playBtn = document.createElement('button');
     playBtn.innerHTML = '🎵 เล่นเพลง';
@@ -881,12 +772,9 @@
       border-radius: 25px;
       cursor: pointer;
       font-size: 14px;
-      font-family: 'Cormorant Garamond', serif;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      font-family: sans-serif;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     `;
-    playBtn.onmouseover = () => playBtn.style.background = 'rgba(232, 120, 154, 1)';
-    playBtn.onmouseout = () => playBtn.style.background = 'rgba(232, 120, 154, 0.9)';
     playBtn.onclick = () => {
       playAudio();
       playBtn.style.display = 'none';
@@ -896,7 +784,6 @@
     }
   };
   
-  // รอสักครู่แล้วเพิ่มปุ่มเพื่อให้ผู้ใช้มีตัวเลือก
   setTimeout(() => {
     if (bgMusic.paused) {
       addPlayButton();
